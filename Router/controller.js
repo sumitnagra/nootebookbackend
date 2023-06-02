@@ -47,7 +47,7 @@ class Usercontroller {
         }
         const { email, password } = req.body;
         try {
-            let result =await UserModel.findOne({ email }).maxTimeMS(20000);
+            let result =await UserModel.findOne({ email }).maxTimeMS(200000);
             if (!result) {
                 return res.status(400).json({ error: "Please enter correct email" })
             }
