@@ -32,7 +32,6 @@ class Usercontroller {
                 }
             }
             const jwtData = jwt.sign(data, JWT_SECRET);
-            // console.log(jwtData)
             res.send({ jwtData })
         } catch (error) {
             console.log(error)
@@ -47,7 +46,7 @@ class Usercontroller {
         }
         const { email, password } = req.body;
         try {
-            let result =await UserModel.findOne({ email }).maxTimeMS(200000);
+            let result =await UserModel.findOne({ email });
             if (!result) {
                 return res.status(400).json({ error: "Please enter correct email" })
             }
@@ -61,13 +60,13 @@ class Usercontroller {
                     id: result.id
                 }
             }
-            const jwtData = await jwt.sign(data, JWT_SECRET);
+            const jwtData = jwt.sign(data, JWT_SECRET);
             success=true;
             res.send({success ,jwtData })
 
         } catch (error) {
             console.log(error)
-            res.send("please use correct information ")
+            res.send(error)
         }
     }
 
