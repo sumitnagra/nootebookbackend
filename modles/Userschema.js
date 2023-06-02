@@ -9,7 +9,7 @@ const Userschema = new mongoose.Schema({
 
 const UserModel=mongoose.model('user',Userschema);
 try {
-    UserModel.createIndexes();
+    UserModel.createIndexes().maxTimeMS(20000);
     
 } catch (error) {
     console.log(error)
