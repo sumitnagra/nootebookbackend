@@ -8,5 +8,10 @@ const Userschema = new mongoose.Schema({
 });
 
 const UserModel=mongoose.model('user',Userschema);
-UserModel.createIndexes();
+try {
+    UserModel.createIndexes();
+    
+} catch (error) {
+    console.log(error)
+}
 export default UserModel;
