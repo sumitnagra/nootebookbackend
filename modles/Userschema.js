@@ -6,12 +6,9 @@ const Userschema = new mongoose.Schema({
     email: { type: String, required: true ,unique:true},
     password: { type: String, required: true }
 });
-
-const UserModel=mongoose.model('user',Userschema);
-try {
-    UserModel.createIndexes().maxTimeMS(20000);
+const conn = mongoose.createConnection();
+const UserModel=conn.model('user',Userschema);
+    UserModel.createIndexes();
     
-} catch (error) {
-    console.log(error)
-}
+
 export default UserModel;

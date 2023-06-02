@@ -3,7 +3,7 @@ const uri ="mongodb+srv://nagarsumit144:sumit0004@cluster0.l3yrn89.mongodb.net/t
 
 const connectMongo = async () => {
     mongoose.set('strictQuery', true);
- mongoose.connect(uri, () => {
+  mongoose.connect(uri, () => {
         console.log("Connected Mongo Successfully")
     })
 }
