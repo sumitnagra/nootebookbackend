@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-const uri ="mongodb+srv://nagarsumit144:sumit0004@cluster0.l3yrn89.mongodb.net/test";
+const uri ="mongodb://127.0.0.1:27017/sumit";
 
 const connectMongo = async () => {
-    mongoose.set('strictQuery', true);
+   
   mongoose.connect(uri, () => {
         console.log("Connected Mongo Successfully")
     })
