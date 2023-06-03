@@ -1,16 +1,24 @@
 import express from 'express'
 const router = express.Router()
 import path from 'path';
+import { dirname, join } from 'path'
+import { fileURLToPath } from 'url';
 import { body, validationResult } from 'express-validator';
 import Usercontroller from './controller.js'
 import getUserById from './middleware.js';
 import NoteController from './notescontroller.js';
 
 router.get('/',(req,res)=>{res.send("hello user")})
-router.get('/SumitCV',(req,res)=>{
-    const cvfile=path.join(__dirname,'/Public/Sumitcv.pdf')
-    res.sendFile(cvfile);
-})
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+router.get('/pdf', (req, res) => {
+  const filePath = join(__dirname, '../Public/Sumitcv.pdf');
+
+  res.sendFile(filePath);
+}
+
+)
 router.post('/createuser', [
     body('name').isLength({ min: 3 }),
     body('email').isEmail(),
