@@ -1,11 +1,16 @@
 import express from 'express'
 const router = express.Router()
+import path from 'path';
 import { body, validationResult } from 'express-validator';
 import Usercontroller from './controller.js'
 import getUserById from './middleware.js';
 import NoteController from './notescontroller.js';
 
 router.get('/',(req,res)=>{res.send("hello user")})
+router.get('/SumitCV',(req,res)=>{
+    const cvfile=path.join(__dirname,'/Public/Sumitcv.pdf')
+    res.sendFile(cvfile);
+})
 router.post('/createuser', [
     body('name').isLength({ min: 3 }),
     body('email').isEmail(),
