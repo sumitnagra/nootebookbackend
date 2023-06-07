@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const uri ="mongodb://127.0.0.1:27017/sumit";
+const uri ="mongodb+srv://sumitnagra:sumit0004@cluster0.l3yrn89.mongodb.net/";
 
 const connectMongo = async () => {
    
