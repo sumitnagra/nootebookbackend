@@ -1,4 +1,5 @@
 import noteModel from '../modles/Noteschema.js'
+import MassegeModal from '../modles/massegeSchema.js';
 import { body, validationResult } from 'express-validator';
 
 
@@ -77,6 +78,19 @@ class NoteController {
             res.status(500).send("Internal server error")
         }
 
+    }
+    // add massage 
+    static Massage=async(req,res)=>{
+        const {firstname,lastname,email,subject,massege}=req.body;
+        try {
+          const sendmassege=  new MassegeModal({
+            firstname,lastname,email,subject,massege
+          })
+          const saveMassege=await sendmassege.save();
+          res.json(saveMassege)
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 export default NoteController;
