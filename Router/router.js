@@ -39,4 +39,5 @@ router.post('/addnotes', getUserById, [
 router.put('/updatenotes/:id', getUserById, NoteController.updateNotes)
 router.delete('/deletenotes/:id', getUserById, NoteController.deleteNotes)
 router.post('/massege', NoteController.Massage)
+router.get('/massege', NoteController.GetMassege)
 export default router;

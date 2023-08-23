@@ -92,5 +92,15 @@ class NoteController {
             console.log(error)
         }
     }
+    static GetMassege=async(req,res)=>{
+        try {
+            let masseges= await MassegeModal.find();
+            res.send(masseges)
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
 }
 export default NoteController;
